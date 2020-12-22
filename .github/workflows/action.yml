@@ -29,4 +29,5 @@ jobs:
         env:
           USERNAME: ${{ secrets.USERNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
+          SCKEY: ${{ secrets.SCKEY }}
         run: python main.py
