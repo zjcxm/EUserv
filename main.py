@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 
 USERNAME = os.environ["USERNAME"]
 PASSWORD = os.environ["PASSWORD"]
+SCKEY = os.environ["SCKEY"]
 PROXIES = {
     "http": "http://127.0.0.1:10809",
     "https": "http://127.0.0.1:10809"
@@ -106,7 +107,17 @@ def check(sess_id, session):
             print("ServerID: %s Renew Failed!" % key)
     if flag:
         print("ALL Work Done! Enjoy")
-
+        
+def server_chan():
+    data = (
+    ('text', 'EUserv续费日志'),
+    ('desp', desp)
+)
+    response = requests.post('https://sc.ftqq.com/' + SCKEY + '.send', data=data)
+    if response.status_code != 200:
+        print('Server酱 推送失败')
+    else:
+        print('Server酱 推送成功')
 
 if __name__ == "__main__":
     if not USERNAME or not PASSWORD:
